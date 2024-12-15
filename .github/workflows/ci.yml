@@ -11,6 +11,7 @@ jobs:
 
   tests:
     runs-on: self-hosted
+    needs: build  # needs like depends on
     steps:
       - uses: actions/checkout@v4
       - run: |
@@ -18,9 +19,9 @@ jobs:
 
   dev:
     runs-on: self-hosted
+    needs: tests
     steps:
       - uses: actions/checkout@v4
       - run: |
           echo
 
-#

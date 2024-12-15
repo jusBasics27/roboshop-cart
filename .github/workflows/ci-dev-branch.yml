@@ -5,14 +5,15 @@ on:
       - '*'
       - '!main'
 run-name: ${{ github.sha }} | ${{ github.event.head_commit.message }}
+
 jobs:
-  build:
-    runs-on: self-hosted
-    steps:
-      - uses: actions/checkout@v4
-      - run: |
-          echo
-      
+#  build:
+#    runs-on: self-hosted
+#    steps:
+#      - uses: actions/checkout@v4
+#      - run: |
+#          echo
+#
 
   tests:
     runs-on: self-hosted
@@ -20,6 +21,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          echo
+          echo npm test
 
-#
+# Im commenting out the build becoz once the code is developed the tests [Unit tests] gonna run in dev branch, No build is required

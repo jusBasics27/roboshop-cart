@@ -5,25 +5,27 @@ on:
       - main
 run-name: ${{ github.sha }} | ${{ github.event.head_commit.message }}
 jobs:
+
+# Once the code is developed the Unit test is performed, then build happens
+  UNIT-Tests:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          echo npm tests
+
   build:
     runs-on: self-hosted
-    steps:
-      - uses: actions/checkout@v4
-      - run: |
-          echo
-      
-
-  tests:
-    runs-on: self-hosted
-    needs: build  # needs like depends on
+    needs: UNIT-Tests  # needs like depends on
     steps:
       - uses: actions/checkout@v4
       - run: |
           echo
 
+#After unit test is passed, build is performed. and then deployed in Dev env, followed by QA
   dev:
     runs-on: self-hosted
-    needs: tests
+    needs: build
     environment: dev # created an 'Environment' in github settings of roboshop-cart project and for each env , i give the approval rights.
     steps:
       - uses: actions/checkout@v4
@@ -39,9 +41,18 @@ jobs:
       - run: |
           echo
 
+    E2E-Tests:
+      runs-on: self-hosted
+      needs: qa
+      environment: qa
+      steps:
+        - uses: actions/checkout@v4
+        - run: |
+            echo
+
   UAT:
     runs-on: self-hosted
-    needs: qa
+    needs: E2E-Tests
     environment: UAT
     steps:
       - uses: actions/checkout@v4

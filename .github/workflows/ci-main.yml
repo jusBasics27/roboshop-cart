@@ -1,4 +1,4 @@
-name: Dev Branch Pipeline
+name: Main Branch Pipeline
 on:
   push:
     branches:

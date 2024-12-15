@@ -1,10 +1,13 @@
+
 name: Dev Branch Pipeline
+
 on:
   push:
     branches:
       - '*'
       - '!main'
 run-name: ${{ github.sha }} | ${{ github.event.head_commit.message }}
+
 
 #******Original Code**********
 #jobs:
@@ -31,4 +34,4 @@ jobs:
   call-workflow:
     uses: jusBasics27/github-reusable-actions/.github/workflows/ci-dev-branch.yml@main
 
-#
+

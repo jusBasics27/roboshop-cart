@@ -41,14 +41,14 @@ jobs:
       - run: |
           echo
 
-    E2E-Tests:
-      runs-on: self-hosted
-      needs: qa
-      environment: qa
-      steps:
-        - uses: actions/checkout@v4
-        - run: |
-            echo
+  E2E-Tests:
+    runs-on: self-hosted
+    needs: qa
+    environment: qa
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          echo
 
   UAT:
     runs-on: self-hosted

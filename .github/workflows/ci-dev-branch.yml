@@ -17,7 +17,6 @@ jobs:
 
   tests:
     runs-on: self-hosted
-    needs: build  # needs like depends on
     steps:
       - uses: actions/checkout@v4
       - run: |

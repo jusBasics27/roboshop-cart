@@ -1,4 +1,4 @@
-name: Cart CI Pipeline
+name: Dev Branch pipeline
 on:
   push:
     branches:
@@ -22,42 +22,3 @@ jobs:
       - run: |
           echo
 
-  dev:
-    runs-on: self-hosted
-    needs: tests
-    environment: dev # created an 'Environment' in github settings of roboshop-cart project and for each env , i give the approval rights.
-    steps:
-      - uses: actions/checkout@v4
-      - run: |
-          echo
-
-  qa:
-    runs-on: self-hosted
-    needs: dev
-    environment: qa
-    steps:
-      - uses: actions/checkout@v4
-      - run: |
-          echo
-
-  UAT:
-    runs-on: self-hosted
-    needs: qa
-    environment: UAT
-    steps:
-      - uses: actions/checkout@v4
-      - run: |
-          echo
-          
-
-  prod:
-    runs-on: self-hosted
-    needs: UAT
-    environment: prod
-    steps:
-      - uses: actions/checkout@v4
-      - run: |
-          echo
-          
-
-#run-name: ${{ github.sha }} | ${{ github.event.head_commit.message }} --> THis is will give coomit id + comments in pipiline

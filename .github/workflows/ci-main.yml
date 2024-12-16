@@ -75,6 +75,10 @@ jobs:
 #*********** Modified code to call github-resuable-actions code************
 
 
-  call-workflow:
-    uses: jusBasics27/github-reusable-actions/.github/workflows/ci-main.yml@main
+#  call-workflow:
+#    uses: jusBasics27/github-reusable-actions/.github/workflows/ci-main.yml@main
 
+ci-step:
+    uses: jusBasics27/github-reusable-actions/.github/workflows/ci-main.yml@main
+    with:
+      componentName: cart

@@ -78,7 +78,7 @@ jobs:
 #  call-workflow:
 #    uses: jusBasics27/github-reusable-actions/.github/workflows/ci-main.yml@main
 
-ci-step:
+  ci-step:
     uses: jusBasics27/github-reusable-actions/.github/workflows/ci-main.yml@main
     with:
       componentName: cart
